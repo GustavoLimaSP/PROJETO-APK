@@ -2,9 +2,16 @@ import streamlit as st
 
 st.title("Avaliação de Dons Espirituais")
 
-st.write("Responda cada afirmação com uma nota de 0 a 5.")
-st.write("0 = Não se aplica a mim")
-st.write("5 = Aplica-se totalmente a mim")
+st.markdown("### Esta afirmação tem sido a experiência da minha vida?")
+
+st.markdown("""
+0 - Nunca  
+1 - Raramente  
+2 - Às vezes  
+3 - Frequentemente  
+4 - Muito  
+5 - Eu brilho nisso!
+""")
 
 perguntas = [
 "Tenho experimentado um desejo especial de transmitir mensagens vindas diretamente de Deus.",
@@ -66,8 +73,9 @@ perguntas = [
 
 respostas = {}
 
-for i in range(55):
-    respostas[i+1] = st.slider(perguntas[i], 0, 5, 0)
+for i in range(len(perguntas)):
+    pergunta_texto = f"{i+1}. {perguntas[i]}"
+    respostas[i+1] = st.slider(pergunta_texto, 0, 5, 0)
 
 mapa_resultados = {
     "Profecia (Pregação)": [1, 12, 23, 34, 45],
